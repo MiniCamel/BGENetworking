@@ -17,12 +17,11 @@ BGENetworking is available through [CocoaPods](https://cocoapods.org). To instal
 it, simply add the following line to your Podfile:
 
 ```ruby
-source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 platform :ios, '9.0'
 
 target '<#TargetName#>' do
 
-pod 'BGENetworking', '~> 1.0.0'
+pod 'BGENetworking', '~> 1.0.3'
 
 end
 ```

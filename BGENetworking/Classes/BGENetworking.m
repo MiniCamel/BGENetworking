@@ -11,7 +11,7 @@
 #import <JSONModel/JSONModel.h>
 
 NSString *_Nonnull const bgeNetworkingLoginInvalidNotification = @"BGENetworkingLoginInvalidNotification";
-NSString *_Nonnull const bgeNetworkingVersion = @"1.0.0";
+NSString *_Nonnull const bgeNetworkingVersion = @"1.0.3";
 
 @interface BGENetworking ()
 
