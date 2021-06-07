@@ -1,0 +1,6 @@
+framework module BGENetworking {
+  umbrella header "BGENetworking-umbrella.h"
+
+  export *
+  module * { export * }
+}

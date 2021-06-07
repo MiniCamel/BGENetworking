@@ -1,0 +1,41 @@
+PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
+  - BGENetworking (1.0.0):
+    - AFNetworking (~> 4.0)
+    - JSONModel
+  - JSONModel (1.8.0)
+
+DEPENDENCIES:
+  - BGENetworking (from `../`)
+
+SPEC REPOS:
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+    - AFNetworking
+    - JSONModel
+
+EXTERNAL SOURCES:
+  BGENetworking:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  BGENetworking: a759ec80b64cb43ad2e3ff34d70570d9217a062b
+  JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
+
+PODFILE CHECKSUM: 7d12cafb61bd317aeda70063da05699f02d389b1
+
+COCOAPODS: 1.10.1

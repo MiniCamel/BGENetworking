@@ -1,0 +1,6 @@
+framework module Pods_BGENetworking_Example {
+  umbrella header "Pods-BGENetworking_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
