@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - BGENetworking (1.0.3):
+  - BGENetworking (1.0.4):
     - AFNetworking (~> 4.0)
     - JSONModel
   - JSONModel (1.8.0)
@@ -33,7 +33,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
-  BGENetworking: d0b5072d8cd18fb96360e819abbf303e6b8f677b
+  BGENetworking: 7982f4b6f48eefda3858a06769954aa547a7b134
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
 
 PODFILE CHECKSUM: c840093f7b7cbbfdbb01bc88fee8ffadd10d3105

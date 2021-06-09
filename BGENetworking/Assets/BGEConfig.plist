@@ -2,33 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>urls</key>
-	<array>
-        <!--图片上传-->
-		<dict>
-			<key>name</key>			                <string>uploadMore</string>
-			<key>path</key>     			        <string>open/file/uploadMore</string>
-			<key>analysisClassName</key>            <string>BaseJson</string>
-		</dict>
-        <!--获取验证码，无返回-->
-		<dict>
-			<key>name</key>     			        <string>getVerifyCode</string>
-			<key>path</key>     			        <string>user/getVerifyCode</string>
-			<key>analysisClassName</key>            <string>BGEBaseModel</string>
-		</dict>
-        <!--商品列表（array类型，带分页）-->
-		<dict>
-            <key>name</key>                         <string>goodsList</string>
-			<key>path</key>			                <string>goods/goodsList</string>
-            <key>analysisClassName</key>            <string>BGEGoodsList</string>
-		</dict>
-        <!--商品详情（object类型）-->
-        <dict>
-            <key>name</key>                         <string>goodsDetail</string>
-            <key>path</key>                         <string>goods/goodsDetail</string>
-            <key>analysisClassName</key>            <string>BGEGoodsDetail</string>
-        </dict>
-	</array>
 	<key>errors</key>
 	<array>
 		<dict>
@@ -51,6 +24,7 @@
 			<string>text/plain</string>
 		</array>
 		<key>uploadImageDefaultMimeType</key>		<string>image/jpeg</string>
+        <key>isJSONRequestSerializer</key>          <false/>
 		<key>timeoutInterval</key>          		<string>10</string>
 		<key>analysisBaseClass</key>		        <string>BGEBaseModel</string>
         <key>errorCodeKeyPath</key>                 <string>meta.code</string>

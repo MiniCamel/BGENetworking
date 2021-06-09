@@ -25,10 +25,9 @@
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		D11C0100266DC94E00EC657E /* BGEBaseNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D11C00F2266DC94D00EC657E /* BGEBaseNetworking.m */; };
 		D11C0101266DC94E00EC657E /* BGECenterNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D11C00F3266DC94D00EC657E /* BGECenterNetworking.m */; };
-		D11C0102266DC94E00EC657E /* BGEGoodsList.m in Sources */ = {isa = PBXBuildFile; fileRef = D11C00F8266DC94E00EC657E /* BGEGoodsList.m */; };
-		D11C0103266DC94E00EC657E /* BGEGoodsDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = D11C00F9266DC94E00EC657E /* BGEGoodsDetail.m */; };
 		D11C0104266DC94E00EC657E /* BGEBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D11C00FA266DC94E00EC657E /* BGEBaseModel.m */; };
 		D11C0105266DC94E00EC657E /* BGEEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = D11C00FD266DC94E00EC657E /* BGEEncrypt.m */; };
+		D16414022670EEF300C5AE28 /* BGELoginResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D16414012670EEF300C5AE28 /* BGELoginResult.m */; };
 		E9418E93DEBBC96128A23CDE /* Pods_BGENetworking_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 985016A81042B5F5B843F6C9 /* Pods_BGENetworking_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,14 +75,12 @@
 		D11C00F3266DC94D00EC657E /* BGECenterNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGECenterNetworking.m; sourceTree = "<group>"; };
 		D11C00F4266DC94D00EC657E /* BGEBaseNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGEBaseNetworking.h; sourceTree = "<group>"; };
 		D11C00F6266DC94E00EC657E /* BGEBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGEBaseModel.h; sourceTree = "<group>"; };
-		D11C00F7266DC94E00EC657E /* BGEGoodsDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGEGoodsDetail.h; sourceTree = "<group>"; };
-		D11C00F8266DC94E00EC657E /* BGEGoodsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGEGoodsList.m; sourceTree = "<group>"; };
-		D11C00F9266DC94E00EC657E /* BGEGoodsDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGEGoodsDetail.m; sourceTree = "<group>"; };
 		D11C00FA266DC94E00EC657E /* BGEBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGEBaseModel.m; sourceTree = "<group>"; };
-		D11C00FB266DC94E00EC657E /* BGEGoodsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGEGoodsList.h; sourceTree = "<group>"; };
 		D11C00FD266DC94E00EC657E /* BGEEncrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGEEncrypt.m; sourceTree = "<group>"; };
 		D11C00FE266DC94E00EC657E /* BGEEncryptDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGEEncryptDelegate.h; sourceTree = "<group>"; };
 		D11C00FF266DC94E00EC657E /* BGEEncrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGEEncrypt.h; sourceTree = "<group>"; };
+		D16414002670EEF300C5AE28 /* BGELoginResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGELoginResult.h; sourceTree = "<group>"; };
+		D16414012670EEF300C5AE28 /* BGELoginResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BGELoginResult.m; sourceTree = "<group>"; };
 		DA0C0F7FF238AEDEEE526770 /* Pods-BGENetworking_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BGENetworking_Example.debug.xcconfig"; path = "Target Support Files/Pods-BGENetworking_Example/Pods-BGENetworking_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E9A76044A9E1411308157BB9 /* Pods_BGENetworking_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BGENetworking_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -234,10 +231,8 @@
 			children = (
 				D11C00F6266DC94E00EC657E /* BGEBaseModel.h */,
 				D11C00FA266DC94E00EC657E /* BGEBaseModel.m */,
-				D11C00FB266DC94E00EC657E /* BGEGoodsList.h */,
-				D11C00F8266DC94E00EC657E /* BGEGoodsList.m */,
-				D11C00F7266DC94E00EC657E /* BGEGoodsDetail.h */,
-				D11C00F9266DC94E00EC657E /* BGEGoodsDetail.m */,
+				D16414002670EEF300C5AE28 /* BGELoginResult.h */,
+				D16414012670EEF300C5AE28 /* BGELoginResult.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -428,12 +423,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* BGEAppDelegate.m in Sources */,
+				D16414022670EEF300C5AE28 /* BGELoginResult.m in Sources */,
 				D11C0105266DC94E00EC657E /* BGEEncrypt.m in Sources */,
-				D11C0103266DC94E00EC657E /* BGEGoodsDetail.m in Sources */,
 				6003F5A7195388D20070C39A /* BGEViewController.m in Sources */,
 				D11C0104266DC94E00EC657E /* BGEBaseModel.m in Sources */,
 				D11C0101266DC94E00EC657E /* BGECenterNetworking.m in Sources */,
-				D11C0102266DC94E00EC657E /* BGEGoodsList.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				D11C0100266DC94E00EC657E /* BGEBaseNetworking.m in Sources */,
 			);

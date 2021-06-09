@@ -1,7 +1,7 @@
 # BGENetworking
 
 [![Build](https://img.shields.io/badge/Build-Pass-brightgreen.svg?style=flat)](https://github.com/MiniCamel/BGENetworking)
-[![Pod](https://img.shields.io/badge/Pod-v1.0.3-6EA4E4.svg?style=flat)](https://cocoapods.org/pods/BGENetworking)
+[![Pod](https://img.shields.io/badge/Pod-v1.0.4-6EA4E4.svg?style=flat)](https://cocoapods.org/pods/BGENetworking)
 [![License](https://img.shields.io/badge/License-MIT%20License-orange.svg?style=flat)](https://github.com/MiniCamel/BGENetworking/blob/main/LICENSE)
 [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg?style=flat)](https://cocoapods.org/pods/BGENetworking)
 
@@ -21,7 +21,7 @@ platform :ios, '9.0'
 
 target '<#TargetName#>' do
 
-pod 'BGENetworking', '~> 1.0.3'
+pod 'BGENetworking', '~> 1.0.4'
 
 end
 ```

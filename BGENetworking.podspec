@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'BGENetworking'
-    s.version          = '1.0.3'
+    s.version          = '1.0.4'
     s.summary          = 'AFNetworking二次封装，抽取公共的uri、path、param、encrypt、return data、error code等内容；'
     s.description      = <<-DESC
         AFNetworking二次封装，抽取公共的uri、path、param、encrypt、return data、error code等内容；

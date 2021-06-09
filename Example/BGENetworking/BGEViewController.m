@@ -10,8 +10,7 @@
 #import "BGEBaseNetworking.h"
 #import "BGECenterNetworking.h"
 #import "BGEEncrypt.h"
-#import "BGEGoodsList.h"
-#import "BGEGoodsDetail.h"
+#import "BGELoginResult.h"
 
 @interface BGEViewController ()
 
@@ -23,11 +22,10 @@
 {
     [super viewDidLoad];
 
-    [[BGEBaseNetworking sharedInstance] POST:@"goodsList" headers:@{} parameters:@{@"userID":@200} progress:nil decryptBlock:[[BGEEncrypt sharedInstance] dontNeedDecryptBlock] success:^(id  _Nullable responseObject) {
-        //goodsList
-        BGEGoodsList *goodsList = (BGEGoodsList *)responseObject;
-        NSLog(@"%ld, %@, %ld", goodsList.meta.code, goodsList.meta.desc, goodsList.meta.count);
-        NSLog(@"%ld, %@", goodsList.data.count, goodsList.data.firstObject);
+    [[BGEBaseNetworking sharedInstance] POST:@"Login/login" headers:@{} parameters:@{@"mobile":@"15312584242", @"password": @"123456"} progress:nil decryptBlock:[[BGEEncrypt sharedInstance] dontNeedDecryptBlock] model:[BGELoginResultModel class] success:^(id  _Nullable responseObject) {
+        BGELoginResultModel *loginResult = (BGELoginResultModel *)responseObject;
+        NSLog(@"%@", loginResult);
+
         
         //goodsDetail
 //        BGEGoodsDetail *goodsDetail = (BGEGoodsDetail *)responseObject;

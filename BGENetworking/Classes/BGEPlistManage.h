@@ -15,10 +15,6 @@
 
 + (instancetype)sharedInstance;
 
-//urls
-- (NSString *)pathWithApiName:(NSString *)apiName;
-- (NSString *)analysisClassNameWithApiName:(NSString *)apiName;
-
 //errors
 - (NSString *)errorDescriptionWithErrorName:(NSString *)errorName;
 

@@ -26,54 +26,59 @@ UIKIT_EXTERN NSString * _Nonnull const bgeNetworkingVersion;
 @property (strong, nonatomic) NSString * _Nonnull imageFormat;
 @property (strong, nonatomic) NSString * _Nonnull hostUrl;
 
-- (nullable NSURLSessionDataTask *)GET:(nonnull NSString *)apiName
+- (nullable NSURLSessionDataTask *)GET:(nonnull NSString *)path
                                headers:(nullable NSDictionary *)headers
                             parameters:(nullable NSDictionary *)parameters
                               progress:(nullable progressHandle)progress
                           decryptBlock:(nonnull decryptBlock)decryptBlock
+                                 model:(nonnull Class)model
                                success:(nonnull successHandle)success
                                failure:(nullable failureHandle)failure;
 
-- (nullable NSURLSessionDataTask *)POST:(nonnull NSString *)apiName
-               headers:(nullable NSDictionary *)headers
+- (nullable NSURLSessionDataTask *)POST:(nonnull NSString *)path
+                                headers:(nullable NSDictionary *)headers
                              parameters:(nullable NSDictionary *)parameters
                                progress:(nullable progressHandle)progress
                            decryptBlock:(nonnull decryptBlock)decryptBlock
+                                  model:(nonnull Class)model
                                 success:(nonnull successHandle)success
                                 failure:(nullable failureHandle)failure;
 
-- (nullable NSURLSessionDataTask *)DELETE:(nonnull NSString *)apiName
-                            headers:(nullable NSDictionary *)headers
+- (nullable NSURLSessionDataTask *)DELETE:(nonnull NSString *)path
+                                  headers:(nullable NSDictionary *)headers
                                parameters:(nullable NSDictionary *)parameters
                                  progress:(nullable progressHandle)progress
                              decryptBlock:(nonnull decryptBlock)decryptBlock
+                                    model:(nonnull Class)model
                                   success:(nonnull successHandle)success
                                   failure:(nullable failureHandle)failure;
 
-- (nullable NSURLSessionDataTask *)PUT:(nonnull NSString *)apiName
-                            headers:(nullable NSDictionary *)headers
-                               parameters:(nullable NSDictionary *)parameters
-                                 progress:(nullable progressHandle)progress
-                             decryptBlock:(nonnull decryptBlock)decryptBlock
-                                  success:(nonnull successHandle)success
-                                  failure:(nullable failureHandle)failure;
+- (nullable NSURLSessionDataTask *)PUT:(nonnull NSString *)path
+                               headers:(nullable NSDictionary *)headers
+                            parameters:(nullable NSDictionary *)parameters
+                              progress:(nullable progressHandle)progress
+                          decryptBlock:(nonnull decryptBlock)decryptBlock
+                                 model:(nonnull Class)model
+                               success:(nonnull successHandle)success
+                               failure:(nullable failureHandle)failure;
 
-- (nullable NSURLSessionDataTask *)PATCH:(nonnull NSString *)apiName
+- (nullable NSURLSessionDataTask *)PATCH:(nonnull NSString *)path
                                  headers:(nullable NSDictionary *)headers
                               parameters:(nullable NSDictionary *)parameters
                                 progress:(nullable progressHandle)progress
                             decryptBlock:(nonnull decryptBlock)decryptBlock
+                                   model:(nonnull Class)model
                                  success:(nonnull successHandle)success
                                  failure:(nullable failureHandle)failure;
 
 - (nullable NSURLSessionDataTask *)uploadEnclosure:(nonnull NSDictionary *)enclosureDictionary
-                                           apiName:(nonnull NSString *)apiName
+                                           apiName:(nonnull NSString *)path
                                            headers:(nullable NSDictionary *)headers
                                         parameters:(nullable NSDictionary *)parameters
                                       decryptBlock:(nonnull decryptBlock)decryptBlock
                                           progress:(nullable progressHandle)progress
+                                             model:(nonnull Class)model
                                            success:(nonnull successHandle)success
                                            failure:(nullable failureHandle)failure;
-
 
 @end

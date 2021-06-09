@@ -36,11 +36,8 @@ static BGEBaseNetworking *singleton = nil;
 - (nonnull NSString *)hostUrl {
     NSString *result = [super hostUrl];
     if (!result) {
-#if DEBUG
-        result = @"http://test.api.zhaosha.com/v3/";
-#else
-        result = @"http://api.zhaosha.com/v3/";
-#endif
+//        result = @"https://test.api.zhaosha.com/v3/";
+        result = @"https://api.zhaosha.com/v3/";
         self.hostUrl = result;
     }
     return result;

@@ -39,11 +39,8 @@ static BGECenterNetworking *singleton = nil;
 - (nonnull NSString *)hostUrl {
     NSString *result = [super hostUrl];
     if (!result) {
-#if DEBUG
-        result = @"http://test.zscenter.zhaosha.com/index.php/Home/";
-#else
-        result = @"http://center.zhaosha.com/index.php/Home/";
-#endif
+        result = @"https://test.zscenter.zhaosha.com/index.php/Home/";
+//        result = @"https://center.zhaosha.com/index.php/Home/";
         self.hostUrl = result;
     }
     return result;

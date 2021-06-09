@@ -17,14 +17,6 @@
 
 @end
 
-@implementation BGEConfigUrl
-
-+ (BOOL)propertyIsOptional:(NSString *)propertyName {
-    return NO;
-}
-
-@end
-
 @implementation BGEConfigError
 
 + (BOOL)propertyIsOptional:(NSString *)propertyName {

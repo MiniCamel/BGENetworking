@@ -50,34 +50,6 @@ static BGEPlistManage *singleton = nil;
 }
 
 #pragma mark - public method
-///根据apiName返回对应的path
-- (NSString *)pathWithApiName:(NSString *)apiName {
-    NSArray *urlsArray = self.bgePlistModel.urls;
-    for (int i = 0; i < urlsArray.count; i++) {
-        BGEConfigUrl *bgeConfigUrl = [urlsArray objectAtIndex:i];
-        if ([bgeConfigUrl.name isEqualToString:apiName]) {
-            return bgeConfigUrl.path;
-        }
-    }
-    
-    BGENetworkingLog(@"path for api name '%@' not found", apiName);
-    return [NSString new];
-}
-
-///根据apiName返回对应的解析类名
-- (NSString *)analysisClassNameWithApiName:(NSString *)apiName {
-    NSArray *urlsArray = self.bgePlistModel.urls;
-    for (int i = 0; i < urlsArray.count; i++) {
-        BGEConfigUrl *bgeConfigUrl = [urlsArray objectAtIndex:i];
-        if ([bgeConfigUrl.name isEqualToString:apiName]) {
-            return bgeConfigUrl.analysisClassName;
-        }
-    }
-    
-    BGENetworkingLog(@"analysis class name for api name '%@' not found", apiName);
-    return [NSString new];
-}
-
 ///根据错误码返回对应的错误信息
 - (NSString *)errorDescriptionWithErrorName:(NSString *)errorName {
     NSArray *errorsArray = self.bgePlistModel.errors;

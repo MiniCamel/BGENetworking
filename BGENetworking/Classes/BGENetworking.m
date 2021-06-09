@@ -11,7 +11,7 @@
 #import <JSONModel/JSONModel.h>
 
 NSString *_Nonnull const bgeNetworkingLoginInvalidNotification = @"BGENetworkingLoginInvalidNotification";
-NSString *_Nonnull const bgeNetworkingVersion = @"1.0.3";
+NSString *_Nonnull const bgeNetworkingVersion = @"1.0.4";
 
 @interface BGENetworking ()
 
@@ -29,77 +29,81 @@ NSString *_Nonnull const bgeNetworkingVersion = @"1.0.3";
 }
 
 #pragma mark - request
-- (nullable NSURLSessionDataTask *)GET:(nonnull NSString *)apiName
+- (nullable NSURLSessionDataTask *)GET:(nonnull NSString *)path
                                headers:(nullable NSDictionary *)headers
                             parameters:(nullable NSDictionary *)parameters
                               progress:(nullable progressHandle)progress
                           decryptBlock:(nonnull decryptBlock)decryptBlock
+                                 model:(nonnull Class)model
                                success:(nonnull successHandle)success
                                failure:(nullable failureHandle)failure {
-    return [self _dataTaskWithHTTPMethod:@"GET" apiName:apiName headers:headers parameters:parameters uploadProgress:nil downloadProgress:^(double progress) {
+    return [self _dataTaskWithHTTPMethod:@"GET" path:path headers:headers parameters:parameters uploadProgress:nil downloadProgress:^(double progress) {
         
-    } decryptBlock:decryptBlock success:success failure:failure];
+    } decryptBlock:decryptBlock model:model success:success failure:failure];
 }
 
-- (nullable NSURLSessionDataTask *)POST:(nonnull NSString *)apiName
+- (nullable NSURLSessionDataTask *)POST:(nonnull NSString *)path
                                 headers:(nullable NSDictionary *)headers
                              parameters:(nullable NSDictionary *)parameters
                                progress:(nullable progressHandle)progress
                            decryptBlock:(nonnull decryptBlock)decryptBlock
+                                  model:(nonnull Class)model
                                 success:(nonnull successHandle)success
                                 failure:(nullable failureHandle)failure {
-    return [self _dataTaskWithHTTPMethod:@"POST" apiName:apiName headers:headers parameters:parameters uploadProgress:^(double progress) {
+    return [self _dataTaskWithHTTPMethod:@"POST" path:path headers:headers parameters:parameters uploadProgress:^(double progress) {
         
-    } downloadProgress:nil decryptBlock:decryptBlock success:success failure:failure];
+    } downloadProgress:nil decryptBlock:decryptBlock model:model success:success failure:failure];
 }
 
-- (nullable NSURLSessionDataTask *)DELETE:(nonnull NSString *)apiName
+- (nullable NSURLSessionDataTask *)DELETE:(nonnull NSString *)path
                                   headers:(nullable NSDictionary *)headers
                                parameters:(nullable NSDictionary *)parameters
                                  progress:(nullable progressHandle)progress
                              decryptBlock:(nonnull decryptBlock)decryptBlock
+                                    model:(nonnull Class)model
                                   success:(nonnull successHandle)success
                                   failure:(nullable failureHandle)failure {
-    return [self _dataTaskWithHTTPMethod:@"DELETE" apiName:apiName headers:headers parameters:parameters uploadProgress:nil downloadProgress:nil decryptBlock:decryptBlock success:success failure:failure];
+    return [self _dataTaskWithHTTPMethod:@"DELETE" path:path headers:headers parameters:parameters uploadProgress:nil downloadProgress:nil decryptBlock:decryptBlock model:model success:success failure:failure];
 }
 
 
-- (nullable NSURLSessionDataTask *)PUT:(nonnull NSString *)apiName
+- (nullable NSURLSessionDataTask *)PUT:(nonnull NSString *)path
                                headers:(nullable NSDictionary *)headers
                             parameters:(nullable NSDictionary *)parameters
                               progress:(nullable progressHandle)progress
                           decryptBlock:(nonnull decryptBlock)decryptBlock
+                                 model:(nonnull Class)model
                                success:(nonnull successHandle)success
                                failure:(nullable failureHandle)failure {
-    return [self _dataTaskWithHTTPMethod:@"PUT" apiName:apiName headers:headers parameters:parameters uploadProgress:nil downloadProgress:nil decryptBlock:decryptBlock success:success failure:failure];
+    return [self _dataTaskWithHTTPMethod:@"PUT" path:path headers:headers parameters:parameters uploadProgress:nil downloadProgress:nil decryptBlock:decryptBlock model:model success:success failure:failure];
 }
 
-- (nullable NSURLSessionDataTask *)PATCH:(nonnull NSString *)apiName
+- (nullable NSURLSessionDataTask *)PATCH:(nonnull NSString *)path
                                  headers:(nullable NSDictionary *)headers
                               parameters:(nullable NSDictionary *)parameters
                                 progress:(nullable progressHandle)progress
                             decryptBlock:(nonnull decryptBlock)decryptBlock
+                                   model:(nonnull Class)model
                                  success:(nonnull successHandle)success
                                  failure:(nullable failureHandle)failure {
-    return [self _dataTaskWithHTTPMethod:@"PATCH" apiName:apiName headers:headers parameters:parameters uploadProgress:nil downloadProgress:nil decryptBlock:decryptBlock success:success failure:failure];
+    return [self _dataTaskWithHTTPMethod:@"PATCH" path:path headers:headers parameters:parameters uploadProgress:nil downloadProgress:nil decryptBlock:decryptBlock model:model success:success failure:failure];
 }
 
 - (nullable NSURLSessionDataTask *)uploadEnclosure:(nonnull NSDictionary *)enclosureDictionary
-                                           apiName:(nonnull NSString *)apiName
+                                              path:(nonnull NSString *)path
                                            headers:(nullable NSDictionary *)headers
                                         parameters:(nullable NSDictionary *)parameters
                                       decryptBlock:(nonnull decryptBlock)decryptBlock
                                           progress:(nullable progressHandle)progress
+                                             model:(nonnull Class)model
                                            success:(nonnull successHandle)success
                                            failure:(nullable failureHandle)failure {
     NSString *hostUrl = [self hostUrl];
-    NSString *path = [[BGEPlistManage sharedInstance] pathWithApiName:apiName];
     NSString *urlPath = [hostUrl stringByAppendingString:path];
     
-    BGENetworkingLog(@"-------upload enclosure apiName: %@, request:%@?%@", apiName, urlPath, [self _stringWithRequestParam:parameters]);
-    
-    AFHTTPSessionManager *sessionManager = [self _bgeNetworkingSessionWithResponseSerializer:
-                                            [AFHTTPResponseSerializer serializer]];
+    BGENetworkingLog(@"-------Enclosesure POST : %@?%@", urlPath, [self _stringWithRequestParam:parameters]);
+        
+    AFHTTPSessionManager *sessionManager = [self _bgeNetworkingSession];
     
     return [sessionManager POST:urlPath
                      parameters:parameters headers:headers
@@ -115,19 +119,23 @@ NSString *_Nonnull const bgeNetworkingVersion = @"1.0.3";
         }
     } success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
         NSDictionary *responseDictionary = [self _responseDictionaryWithData:responseObject decryptBlock:decryptBlock];
-        [self _requestSuccessWithApiName:apiName responseObject:responseDictionary success:success failure:failure];
+        [self _requestSuccessWithModel:model responseObject:responseDictionary success:success failure:failure];
     } failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
-        [self _requestFailureWithApiName:apiName error:error failure:failure];
+        [self _requestFailureWithError:error failure:failure];
     }];
 }
 
 #pragma mark - private method
-- (AFHTTPSessionManager *)_bgeNetworkingSessionWithResponseSerializer:(AFHTTPResponseSerializer *)responseSerializer {
+- (AFHTTPSessionManager *)_bgeNetworkingSession {
     AFHTTPSessionManager *result = [AFHTTPSessionManager manager];
     
-    result.requestSerializer = [AFJSONRequestSerializer serializer];
+    if ([BGEPlistManage sharedInstance].bgePlistModel.configure.isJSONRequestSerializer) {
+        result.requestSerializer = [AFJSONRequestSerializer serializer];
+    } else {
+        result.requestSerializer = [AFHTTPRequestSerializer serializer];
+    }
    
-    result.responseSerializer = responseSerializer;
+    result.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     //设置可接收的contentType类型
     NSArray *acceptContentTypeArray = [BGEPlistManage sharedInstance].bgePlistModel.configure.acceptContentType;
@@ -141,24 +149,23 @@ NSString *_Nonnull const bgeNetworkingVersion = @"1.0.3";
 }
 
 - (nullable NSURLSessionDataTask *)_dataTaskWithHTTPMethod:(nonnull NSString *)httpMethod
-                                                  apiName:(nonnull NSString *)apiName
-                                                  headers:(nullable NSDictionary *)headers
-                                               parameters:(nullable NSDictionary *)parameters
-                                           uploadProgress:(nullable progressHandle)uProgress
-                                         downloadProgress:(nullable progressHandle)dProgress
-                                             decryptBlock:(nonnull decryptBlock)decryptBlock
-                                                  success:(nonnull successHandle)success
-                                                  failure:(nullable failureHandle)failure {
+                                                      path:(nonnull NSString *)path
+                                                   headers:(nullable NSDictionary *)headers
+                                                parameters:(nullable NSDictionary *)parameters
+                                            uploadProgress:(nullable progressHandle)uProgress
+                                          downloadProgress:(nullable progressHandle)dProgress
+                                              decryptBlock:(nonnull decryptBlock)decryptBlock
+                                                     model:(nonnull Class)model
+                                                   success:(nonnull successHandle)success
+                                                   failure:(nullable failureHandle)failure {
 
     //拼接域名和路径
     NSString *hostUrl = [self hostUrl];
-    NSString *path = [[BGEPlistManage sharedInstance] pathWithApiName:apiName];
     NSString *urlPath = [hostUrl stringByAppendingString:path];
     
-    BGENetworkingLog(@"-------httpMethod apiName: %@, request:%@?%@", apiName, urlPath, [self _stringWithRequestParam:parameters]);
+    BGENetworkingLog(@"-------%@ : %@?%@", httpMethod, urlPath, [self _stringWithRequestParam:parameters]);
     
-    AFHTTPSessionManager *sessionManager = [self _bgeNetworkingSessionWithResponseSerializer:
-                                            [AFHTTPResponseSerializer serializer]];
+    AFHTTPSessionManager *sessionManager = [self _bgeNetworkingSession];
     
     NSURLSessionDataTask *dataTask = [sessionManager dataTaskWithHTTPMethod:httpMethod URLString:urlPath parameters:parameters headers:headers uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
         if (uProgress) {
@@ -171,10 +178,10 @@ NSString *_Nonnull const bgeNetworkingVersion = @"1.0.3";
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //请求成功的处理，考虑到返回数据可能加密（加密之后就不是json格式），返回都用data来接收，解密之后再转成dictionary
         NSDictionary *responseDictionary = [self _responseDictionaryWithData:responseObject decryptBlock:decryptBlock];
-        [self _requestSuccessWithApiName:apiName responseObject:responseDictionary success:success failure:failure];
+        [self _requestSuccessWithModel:model responseObject:responseDictionary success:success failure:failure];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //请求失败的处理
-        [self _requestFailureWithApiName:apiName error:error failure:failure];
+        [self _requestFailureWithError:error failure:failure];
     }];
     
     [dataTask resume];
@@ -185,6 +192,7 @@ NSString *_Nonnull const bgeNetworkingVersion = @"1.0.3";
 //把返回的NSData类型转换为NSDictionary对象，中间加了解密的clock方法回调
 - (NSDictionary *)_responseDictionaryWithData:(NSData *)data decryptBlock:(nonnull decryptBlock)decryptBlock {
     NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    BGENetworkingLog(@"response: %@", responseString);
     NSData *jsonData = [decryptBlock(responseString) dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
     return responseDictionary;
@@ -222,24 +230,16 @@ NSString *_Nonnull const bgeNetworkingVersion = @"1.0.3";
     return result;
 }
 
-- (void)_requestSuccessWithApiName:(NSString *)apiName
-                   responseObject:(id)responseObject
-                          success:(nonnull successHandle)success
-                          failure:(nullable failureHandle)failure {
-    BGENetworkingLog(@"-------apiName: %@, response: %@", apiName, responseObject);
-    
+- (void)_requestSuccessWithModel:(nonnull Class)model
+                  responseObject:(id)responseObject
+                         success:(nonnull successHandle)success
+                         failure:(nullable failureHandle)failure {
     int errorCode = [[responseObject valueForKeyPath:[BGEPlistManage sharedInstance].bgePlistModel.configure.errorCodeKeyPath] intValue];
 
     //考虑到不同的团队使用的成功的code可能不一样，在plist文件中配置
     if (errorCode == [BGEPlistManage sharedInstance].bgePlistModel.configure.responseSuccessCode) {
         //通过JSONModel方法把dictionary转换成对应的Model类返回
-        NSString *className = [[BGEPlistManage sharedInstance] analysisClassNameWithApiName:apiName];
-        Class class = NSClassFromString(className);
-        id returnObject = [[class alloc] initWithDictionary:responseObject error:nil];
-
-        if (![returnObject isMemberOfClass:class]) {
-            BGENetworkingLog(@"-------apiName: %@, analysis class error: %@, actual class name: %@", apiName, NSStringFromClass(class), [returnObject class]);
-        }
+        id returnObject = [[model alloc] initWithDictionary:responseObject error:nil];
         
         success(returnObject);
     }
@@ -266,7 +266,7 @@ NSString *_Nonnull const bgeNetworkingVersion = @"1.0.3";
 }
 
 ///请求的网络状态失败和服务器逻辑失败是同样的处理逻辑
-- (void)_requestFailureWithApiName:(NSString *)apiName error:(NSError *)error failure:(failureHandle)failure {
+- (void)_requestFailureWithError:(NSError *)error failure:(failureHandle)failure {
     Class class = NSClassFromString([BGEPlistManage sharedInstance].bgePlistModel.configure.analysisBaseClass);
     id errorObject = [[class alloc] init];
     
